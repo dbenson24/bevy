@@ -4422,3 +4422,6 @@ name = "Cooldown"
 description = "Example for cooldown on button clicks"
 category = "Usage"
 wasm = true
+
+[patch.crates-io]
+naga_oil = { git = "https://github.com/JMS55/naga_oil", branch = "solari6" }
