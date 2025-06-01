@@ -81,7 +81,7 @@ use crate::{
 };
 use alloc::vec::Vec;
 use bevy_platform::sync::atomic::Ordering;
-use core::{fmt, hash::Hash, mem, num::NonZero, panic::Location};
+use core::{fmt, hash::Hash, mem, num::NonZero, panic::Location, u32};
 use log::warn;
 
 #[cfg(feature = "serialize")]
@@ -118,7 +118,7 @@ type IdCursor = isize;
 pub struct EntityRow(NonMaxU32);
 
 impl EntityRow {
-    const PLACEHOLDER: Self = Self(NonMaxU32::MAX);
+    const PLACEHOLDER: Self = Self(NonMaxU32::new(u32::MAX - 1).unwrap());
 
     /// Constructs a new [`EntityRow`] from its index.
     pub const fn new(index: NonMaxU32) -> Self {
