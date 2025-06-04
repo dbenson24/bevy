@@ -41,12 +41,12 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     commands.spawn((
         Camera3d::default(),
         Camera {
-            clear_color: ClearColorConfig::Custom(Color::BLACK),
+            // clear_color: ClearColorConfig::Custom(Color::BLACK),
             ..default()
         },
         CameraController::default(),
-        Pathtracer::default(),
-        CameraMainTextureUsages::default().with(TextureUsages::STORAGE_BINDING),
+        // Pathtracer::default(),
+        // CameraMainTextureUsages::default().with(TextureUsages::STORAGE_BINDING),
         Transform::from_matrix(Mat4 {
             x_axis: Vec4::new(0.99480534, 0.0, -0.10179563, 0.0),
             y_axis: Vec4::new(-0.019938117, 0.98063105, -0.19484669, 0.0),
@@ -75,8 +75,7 @@ fn add_raytracing_meshes_on_scene_load(
         if let Ok(mesh) = mesh.get(descendant) {
             commands
                 .entity(descendant)
-                .insert(RaytracingMesh3d(mesh.0.clone()))
-                .remove::<Mesh3d>();
+                .insert(RaytracingMesh3d(mesh.0.clone()));
         }
     }
 }
